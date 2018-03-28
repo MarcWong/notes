@@ -14,11 +14,11 @@
 
 - ### 1.2 将其二值化(白色为建筑，黑色为植被+其他)：
 
-![](000001.jpg)
+![](seg/000001.jpg)
 
 - ### 1.3 去除小型色块噪声，进行补洞后的结果：
 
-![](000001-out.jpg)
+![](segmorph/000001.jpg)
 
 
 ## 2 mask、原图canny进行与操作
@@ -29,8 +29,24 @@
 
 - ### 2.2 与操作后的结果(1.3与2.1)：
 
-![](000001-cannymask.jpg)
+![](segmask_canny_Vis/000001.jpg)
 
 - ### 2.3 对mask过的canny进行形态学处理：
 
-![](000001-final.jpg)
+![](output_Vis/000001.jpg)
+
+## 更多结果
+
+- #### 000349:
+
+![](seg/000349.jpg)
+![](segmorph/000349.jpg)
+![](segmask_canny_Vis/000349.jpg)
+![](output_Vis/000349.jpg)
+
+- #### 000386:
+
+![](seg/000386.jpg)
+![](segmorph/000386.jpg)
+![](segmask_canny_Vis/000386.jpg)
+![](output_Vis/000386.jpg)
