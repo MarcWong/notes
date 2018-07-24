@@ -19,7 +19,6 @@
 /**
  * Definition for a binary tree node.
  */
-
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -27,10 +26,25 @@ struct TreeNode {
     // TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-
+/*--------------------------solution start from here--------------------------------------*/
 class Solution {
 public:
+    int max_depth;
     int maxDepth(TreeNode* root) {
-        
+        max_depth = 0;
+        search(root, 1);
+        return max_depth;
+    }
+    void search(TreeNode* node, int depth){
+        if(!node)
+            return;
+        if(depth>max_depth)
+            max_depth = depth;
+        if(node->left){
+            search(node->left,depth+1);
+        }
+        if(node->right){
+            search(node->right,depth+1);
+        }
     }
 };
