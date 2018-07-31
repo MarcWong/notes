@@ -1,6 +1,7 @@
 .DS_Store
 *.out
-
+*.pdf
+*.html
 # Editor directories and files
 .vscode
 .idea
