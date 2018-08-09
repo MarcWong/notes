@@ -1,8 +1,7 @@
 # 基于图像的大规模场景三维建模
-- 报告人：中科院自动化研究所　申抒含
+- 报告人：中科院自动化研究所 模式识别国家重点实验室　申抒含
 
-
-视频序列＋离线处理
+### 视频序列＋离线处理
 
 |slam(optimization)|SfM(incremental)|
 |---|---|
@@ -14,9 +13,7 @@
 |Full Bundle Adjustment|Full Bundle Adjustment|
 
 ## 图像三维重建基本流程
-多视角图像——>稀疏点云重建——>稠密点云重建——>点云语义分割——>部件语义建模——>三维语义模型
-
-图像——>稀疏点云——>稠密点云——>语义点云——>部件模型——>整体语义模型
+![process.png](process.png)
 
 ## Progressive SfM with Orthogonal MSTs
 
@@ -38,12 +35,14 @@
 |Incremental SfM|
 |Full Bundle Adjustment|
 
-这部分工作主要是利用视点图(View Graph)的正交最小生成树对渐进式SfM的优化(track)
+这部分工作主要是利用视点图(View Graph)的正交最小生成树对渐进式SfM的优化(track)。
 
-![progressive SfM](IMG_0726.JPG)
-![progressive SfM](IMG_0727.JPG)
-![progressive SfM](IMG_0729.JPG)
-![progressive SfM](IMG_0730.JPG)
+![progressive SfM](sfm1.JPG)
+![progressive SfM](sfm2.JPG)
+![progressive SfM](sfm3.JPG)
+![progressive SfM](sfm4.JPG)
+![progressive SfM](sfm5.JPG)
+![progressive SfM](sfm6.JPG)
 
 ## Accurate Ground-to-Aerial Points Merging
 
@@ -51,9 +50,12 @@
 
 > Accurate and Efficient Ground-to-Aerial Model Alignment
 
-由于地面图像和航拍图像在视点和尺度上差异较大，直接使用SIFT等匹配方法效果不好，这部分工作的目的是更好的融合地面和航拍图像得到的点云
+由于地面图像和航拍图像在视点和尺度上差异较大，直接使用SIFT等传统描述子的匹配方法效果不好，这部分工作的目的是更好的融合地面和航拍图像得到的点云。
 
-![progressive SfM](IMG_0735.JPG)
+![progressive SfM](point1.JPG)
+![progressive SfM](point2.JPG)
+![progressive SfM](point3.JPG)
+![progressive SfM](point4.JPG)
 
 ## 3D Model Semantic Labeling by Active Learning(主动学习)
 
@@ -64,13 +66,17 @@
 
 ![semantic1](semantic1.png)
 
-### 工作流程：
-**Images & Annotations** —Fine tuning—> **Segmentation CNN**　—Semantic Fution—> **Semantic 3D Model**
-
 ### Basic Idea:
 - Fine tuning a trained segmentation CNN(Deeplab V2 trained on COCO)
 - Selecting as few images as possible for human annotation with Active Learning
 - Using the merged semantic 3D model as a week supervisor
+
+### 工作流程：
+**Images & Annotations** — Fine tuning —> **Segmentation CNN**　— Semantic Fution —> **Semantic 3D Model**
+
+他们这部分的工作流程与我们基本一致，对语义分割预训练模型进行微调，选取尽可能少的需要人工进行标注的标注图片。不过他们更进一步的工作是能够将语义三维模型作为这一步的监督。
+
+
 
 ### Batch Images Selection Criterial:
 - Observation uncertainty: images are hard to segmentation
@@ -88,6 +94,8 @@
 
 ![mvs1](mvs1.png)
 ![mvs2](mvs2.png)
+![mvs1](mvs3.png)
+![mvs2](mvs4.png)
 
 模型简化，90%的压缩率，符合建筑标准：CityGML(LOD 0-3)
 
